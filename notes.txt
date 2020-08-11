@@ -1,0 +1,40 @@
+STEP: 1 - Plan the project 
+  TASK: create basic wireframes of pages
+  FEATURES: most apps contain the following features  
+    SECTION: Front end
+      > Home page
+      > Profile Page 
+      > Page of List of Something
+      > Details page of single Something 
+      > Login/Signup/Forgot password 
+      > Dashboard 
+      > Terms and Conditions / Privacy Policy etc
+    SECTION: Back end
+      > Authentication
+      > Resources
+      > RESTAPI 
+      > Analytics
+      > Image Handling
+      > Services
+      > Data Models
+        > Meetup Model
+          - id
+          - title
+          - description
+          - date
+          - creator id
+          - image URL
+        > User Model 
+          - id 
+          - email 
+          - password
+
+STEP: 2 Starting the project 
+  // Create a new project 
+  >>>: vue create .
+  // Add vuetify
+  >>>: vue add vuetify
+  // Add router 
+  >>>: vue add router 
+  // Add vuex 
+  >>>: npm install --save vuex 
