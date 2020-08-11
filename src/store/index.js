@@ -8,8 +8,9 @@ export default new Vuex.Store({
     loadedMeetups: [
       {
         imageUrl: "https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg",
-        title: "New york Meetup",
+        title: "Munich Meetup",
         id: 1,
+        description: "lorem ipsum dolor sit amet",
         date: "2020-08-17",
         color: "#1F7087",
         postedBy: "Foster the People"
@@ -18,6 +19,7 @@ export default new Vuex.Store({
         imageUrl: "https://cdn.vuetifyjs.com/images/carousel/sky.jpg",
         title: "Berlin Meetup",
         id: 2,
+        description: "lorem ipsum dolor sit amet",
         date: "2020-08-17",
         color: "#282828",
         postedBy: "Ellie Goulding"
@@ -26,6 +28,7 @@ export default new Vuex.Store({
         imageUrl: "https://cdn.vuetifyjs.com/images/carousel/bird.jpg",
         title: "London Meetup",
         id: 3,
+        description: "lorem ipsum dolor sit amet",
         date: "2020-08-17",
         color: "#385F73",
         postedBy: "Super Boy"
@@ -34,6 +37,7 @@ export default new Vuex.Store({
         imageUrl: "https://cdn.vuetifyjs.com/images/carousel/planet.jpg",
         title: "Paris Meetup",
         id: 4,
+        description: "lorem ipsum dolor sit amet",
         date: "2020-08-17",
         color: "#952175",
         postedBy: "Jack the Nice guy"
@@ -44,8 +48,28 @@ export default new Vuex.Store({
       registeredMeetups: []
     }
   },
-  mutations: {},
-  actions: {},
+  mutations: {
+    createMeetup(state, payload) {
+      state.loadedMeetups.push(payload);
+    }
+  },
+  actions: {
+    createMeetup({ commit }, payload) {
+      const meetup = {
+        title: payload.title,
+        location: payload.location,
+        imageUrl: payload.imageUrl,
+        description: payload.description,
+        date: payload.date ? payload.date : Date.now().toString(),
+        color: payload.color,
+        postedBy: payload.postedBy ? payload.postedBy : "Guest User",
+        id: payload.id ? payload.id : Date.now()
+      };
+
+      // Reach out to storage (firebase || mysql) and store data
+      commit("createMeetup", meetup);
+    }
+  },
   getters: {
     loadedMeetups(state) {
       return state.loadedMeetups.sort((meetupA, meetupB) => {

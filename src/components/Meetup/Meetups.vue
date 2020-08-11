@@ -6,7 +6,7 @@
           <v-col v-for="(item, i) in meetups" :key="i" cols="12" sm="8" md="8">
             <v-card :color="item.color" dark>
               <div class="d-flex flex-no-wrap justify-start">
-                <v-avatar class="ma-0" size="150" tile>
+                <v-avatar class="ma-3" size="125" tile>
                   <v-img
                     :src="item.imageUrl"
                     :gradient="`to top , ${item.color}EE, ${item.color}00`"
@@ -18,12 +18,14 @@
                     v-text="item.title"
                   ></v-card-title>
 
-                  <v-card-subtitle v-text="item.postedBy"></v-card-subtitle>
-                  <v-card-actions class="mt-3">
+                  <v-card-subtitle v-text="item.date"></v-card-subtitle>
+                  <v-card-text class="d-none">{{
+                    item.description
+                  }}</v-card-text>
+                  <v-card-actions>
                     <v-btn text :to="`/meetups/${item.id}`">
                       <v-icon>mdi-fast-forward</v-icon> View Meetup</v-btn
                     >
-                    <v-btn text>Button</v-btn>
                   </v-card-actions>
                 </div>
               </div>
