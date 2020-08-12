@@ -5,9 +5,9 @@
         ><p class="text-h4 mt-6">Create A New Meetup</p></v-col
       >
     </v-row>
-    <v-row cols="12" sm="6">
+    <v-row cols="12" sm="10">
       <v-col class="d-flex mx-auto justfy-center">
-        <v-card class="px-6 pb-6 mx-auto" max-width="500" style="width: 100%;">
+        <v-card class="px-6 pb-6 mx-auto" max-width="700" style="width: 100%;">
           <v-card-title>Add Meetup Details</v-card-title>
           <v-form @submit.prevent="onCreateMeetup">
             <v-text-field
@@ -71,6 +71,16 @@
               class="mt-1"
               append-icon="mdi-pencil"
             ></v-textarea>
+            <v-card-title>Set the Date and Time</v-card-title>
+            <v-card-subtitle
+              ><span v-if="datePicker">{{ datePicker }}</span> -
+              <span v-if="timePicker">{{ timePicker }}</span
+              ><span>{{ submitableDateTime }}</span></v-card-subtitle
+            >
+            <v-row justify="space-around">
+              <v-date-picker class="mb-3" v-model="datePicker"></v-date-picker>
+              <v-time-picker v-model="timePicker" format="24hr"></v-time-picker>
+            </v-row>
             <v-btn
               class="primary"
               type="submit"
@@ -96,6 +106,8 @@ export default {
       imageUrl: null,
       description: "",
       location: "",
+      datePicker: new Date().toISOString().substr(0, 10),
+      timePicker: null,
       color: { name: "Dark Grey", value: "#282828" },
       colors: [
         { name: "Dark Grey", value: "#282828" },
@@ -137,6 +149,19 @@ export default {
         this.location !== "" &&
         this.description !== ""
       );
+    },
+    submitableDateTime() {
+      const date = new Date(this.datePicker);
+
+      if (typeof this.timePicker === "string") {
+        console.log("string", this.timePicker);
+      } else {
+        console.log("date", this.timePicker);
+        // date.setHours(this.timePicker.getHours());
+        // date.setMinutes(this.timePicker.getMinutes());
+      }
+      console.log(date, this.timePicker);
+      return date;
     }
   }
 };
