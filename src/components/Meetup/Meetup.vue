@@ -8,7 +8,7 @@
       prominent
       :src="meetup.imageUrl"
       fade-img-on-scroll
-      height="220"
+      height="250"
       scroll-threshold="500"
       class="mt-14"
       style="z-index: 1;"
