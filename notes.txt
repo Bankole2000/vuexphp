@@ -38,3 +38,6 @@ STEP: 2 Starting the project
   >>>: vue add router 
   // Add vuex 
   >>>: npm install --save vuex 
+
+  // Adding Firebase to the project 
+  >>>: npm install --save firebase

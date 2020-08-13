@@ -11,7 +11,7 @@ export default new Vuex.Store({
         title: "Munich Meetup",
         id: 1,
         description: "lorem ipsum dolor sit amet",
-        date: "2020-08-17",
+        date: new Date(),
         color: "#1F7087",
         postedBy: "Foster the People"
       },
@@ -20,7 +20,7 @@ export default new Vuex.Store({
         title: "Berlin Meetup",
         id: 2,
         description: "lorem ipsum dolor sit amet",
-        date: "2020-08-17",
+        date: new Date(),
         color: "#282828",
         postedBy: "Ellie Goulding"
       },
@@ -29,7 +29,7 @@ export default new Vuex.Store({
         title: "London Meetup",
         id: 3,
         description: "lorem ipsum dolor sit amet",
-        date: "2020-08-17",
+        date: new Date(),
         color: "#385F73",
         postedBy: "Super Boy"
       },
@@ -38,7 +38,7 @@ export default new Vuex.Store({
         title: "Paris Meetup",
         id: 4,
         description: "lorem ipsum dolor sit amet",
-        date: "2020-08-17",
+        date: new Date(),
         color: "#952175",
         postedBy: "Jack the Nice guy"
       }

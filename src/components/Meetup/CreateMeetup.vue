@@ -73,8 +73,6 @@
             ></v-textarea>
             <v-card-title>Set the Date and Time</v-card-title>
             <v-card-subtitle
-              ><span v-if="datePicker">{{ datePicker }}</span> -
-              <span v-if="timePicker">{{ timePicker }}</span
               ><span>{{ submitableDateTime }}</span></v-card-subtitle
             >
             <v-row justify="space-around">
@@ -107,7 +105,7 @@ export default {
       description: "",
       location: "",
       datePicker: new Date().toISOString().substr(0, 10),
-      timePicker: null,
+      timePicker: "00:00",
       color: { name: "Dark Grey", value: "#282828" },
       colors: [
         { name: "Dark Grey", value: "#282828" },
@@ -130,7 +128,7 @@ export default {
         description: this.description,
         imageUrl: this.imageUrl,
         color: this.color.value,
-        date: Date.now().toString()
+        date: this.submitableDateTime
       };
       console.log(meetupData);
 
@@ -154,13 +152,18 @@ export default {
       const date = new Date(this.datePicker);
 
       if (typeof this.timePicker === "string") {
-        console.log("string", this.timePicker);
+        console.log("string", this.timePicker, date);
+        let hours = this.timePicker.match(/^(\d+)/)[1];
+        let minutes = this.timePicker.match(/:(\d+)/)[1];
+
+        date.setHours(hours);
+        date.setMinutes(minutes);
       } else {
-        console.log("date", this.timePicker);
-        // date.setHours(this.timePicker.getHours());
-        // date.setMinutes(this.timePicker.getMinutes());
+        console.log("date", this.timePicker, date);
+        date.setHours(this.timePicker.getHours());
+        date.setMinutes(this.timePicker.getMinutes());
       }
-      console.log(date, this.timePicker);
+      console.log(date);
       return date;
     }
   }

@@ -18,7 +18,8 @@
                     v-text="item.title"
                   ></v-card-title>
 
-                  <v-card-subtitle v-text="item.date"></v-card-subtitle>
+                  <!-- <v-card-subtitle v-text="item.date | date">{{ item.date | date }}</v-card-subtitle> -->
+                  <v-card-subtitle>{{ item.date | date }}</v-card-subtitle>
                   <v-card-text class="d-none">{{
                     item.description
                   }}</v-card-text>
